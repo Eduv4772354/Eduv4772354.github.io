@@ -35,7 +35,7 @@
         </li>
           
         <li class="nav-item">
-          <a class="nav-link" href="#">temp user</a>
+          <a class="nav-link" href="#"><?php echo $_SESSION["EmailAddress"]; ?> </a>
         </li>
       </ul>
     </div>
