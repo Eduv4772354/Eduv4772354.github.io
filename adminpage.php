@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="Tools/CSS/styles.css">
     <script src="Tools/JS/scripts.js"></script>
-    <title>Listing</title>
+    <title>Admin Site</title>
 </head>
 <body>
   <!--This nav bar from a preset in bootstrap links to pages in deliverable 2 and in documentation-->
@@ -24,10 +28,13 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Settings</a>
         </li>
-                <li class="nav-item">
+          <li class="nav-item">
             <form action ="home.php" method="post"> 
               <input type="submit" class="nav-link"  name="logout" value="logout"></a>
             </form>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" ><?php if(isset($_SESSION["EmailAddress"])){ echo "Greetings ". $_SESSION["EmailAddress"];}else{echo "No user signed in";}; ?> </a>
         </li>
       </ul>
     </div>
@@ -35,7 +42,7 @@
 </nav>
 
     <div class="main-div">
-      <h1 id="Main-heading">Listing</h1>
+      <h1 id="Main-heading">Admin page</h1>
 
     </div>
     
@@ -46,3 +53,10 @@
          <p>Afri-E-Com 2025</p>
 </footer>
 </html>
+
+<?php
+        if(isset($_POST["logout"])){
+          session_destroy();
+          header("location: Home.php");
+        }
+?>

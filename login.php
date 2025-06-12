@@ -98,6 +98,8 @@
 <?php
     //Variables
     //There needs to be a connection between the DB and this session where we first verify if text is not empty and then if that data exists in the DB then it logs in
+
+    //user must not be able to go back to login from home.php
         if(isset($_POST["login"])){
         if(!empty($_POST["emailaddress"]) && !empty($_POST["password"])){
                 //Saving session credentials

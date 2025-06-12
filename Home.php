@@ -13,10 +13,12 @@
     <title>Landing</title>
 </head>
 <body>
+
+<!-- Change header to remove login when user is siggned in-->
   <header>
       <nav class="navbar navbar-expand-lg bg-body-tertiary py-3">
   <div class="container-fluid">
-    <a class="navbar-brand" href="Home.php">Afri-E-Com</a>
+    <a class="navbar-brand" href="Home.php"><img src=Tools/Images/icons8-south-africa-color-70.png>Afri-E-Com</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -26,6 +28,9 @@
           <a class="nav-link" href="Home.php">Homepage</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="adminpage.php">Admin</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="login.php">Login</a>
         </li>
         <li class="nav-item">
@@ -33,10 +38,10 @@
               <input type="submit" class="nav-link"  name="logout" value="logout"></a>
             </form>
         </li>
-          
         <li class="nav-item">
-          <a class="nav-link" href="#"><?php echo $_SESSION["EmailAddress"]; ?> </a>
+          <a class="nav-link" ><?php if(isset($_SESSION["EmailAddress"])){ echo "Greetings ". $_SESSION["EmailAddress"];}else{echo "No user signed in";}; ?> </a>
         </li>
+
       </ul>
     </div>
   </div>
@@ -46,10 +51,42 @@
 <!--Add main tag-->
 <main>
     <div class="main-div">
-      <h1 id="Main-heading">Landing page</h1>
+      <h1 id="Main-heading">Main page</h1>
       <p>This is the first paragraph</p>
 
+      <input type="text" id="inputText" placeholder="Enter text"><br>
+      <button onclick="changeTitle()"> Change heading</button>
   </div>
+        <div class="listings-div">
+          
+      <h2>Current Listings</h2>
+        
+        <div class="row">
+            <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+        <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      </div>
 </main>
 
   
@@ -63,13 +100,21 @@
 </html>
 
 <?php
-        //throw new Exception("Unable to show session info");
-
-              echo"Email Address: ". $_SESSION["EmailAddress"]. "<br>";
-              echo"Password: ". $_SESSION["PassWord"]. "<br>";
-
+        /*throw new Exception("Unable to show session info");
+              if(isset($_SESSION["EmailAddress"])){
+                   echo "Email Address: ".$_SESSION["EmailAddress"]. "<br>";
+                  }else{
+                    echo "No user loggged in <br>";
+                  }
+              
+              if(isset($_SESSION["PassWord"])){
+                   echo "Email Address: ".$_SESSION["PassWord"]. "<br>";
+                  }else{
+                    echo "No user loggged in <br>";
+                  }
+                    */
         if(isset($_POST["logout"])){
           session_destroy();
-          header("location: login.php");
+          header("location: Home.php");
         }
 ?>
