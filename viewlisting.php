@@ -1,0 +1,81 @@
+<?php
+    session_start();
+    include("dbconn.php");
+    if (isset($_GET['id'])) {
+    $id = $_GET['id'];}
+    //$ListingTable="tbl_listings";
+    $ListingTitle= "Hatsune miku figure";
+    $sqlGet= " SELECT * FROM tbl_listings WHERE listing_ID='$id'";
+    $GetResult=$dbconn->query($sqlGet);
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="sitepro\CSS\styles.css">
+    <script src="sitepro/JS/scripts.js"></script>
+    <title>Listing</title>
+</head>
+<body>
+  <!--This nav bar from a preset in bootstrap links to pages in deliverable 2 and in documentation-->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary py-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.php"><img src=sitepro/Images/icons8-south-africa-color-70.png>Afri-E-Com</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse nav-icons" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="Mainpage.php">Mainpage</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Settings</a>
+        </li>
+        <li class="nav-item">
+            <form action ="index.php" method="post"> 
+              <input type="submit" class="nav-link"  name="logout" value="logout"></a>
+            </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="main-div">
+      <h1 id="Main-heading">Listing: </h1>
+        <?php while($rows=$GetResult->fetch_assoc())
+                {
+        ?>
+        <h3><?php Echo $rows['listingTitle'] ?></h3>
+        <div >
+          <div class="Viewlistingcontainer">
+                 <!-- referenced https://www.geeksforgeeks.org/php/how-to-fetch-data-from-localserver-database-and-display-on-html-table-using-php/-->
+                <p><?php echo '<img src="data:image/jpeg;base64,'. $rows['itemImage'] .'" alt="Base64 Image" width="500px" length="500px">'; ;?></p>
+                 <div class="main-div">
+                  <p><?php echo "Description: ".$rows['description'];?></p>
+                  <p><?php echo "Price: "."R". $rows['price'];?></p>
+                  <p><?php echo "Phone number: ".$rows['contactNo'];?></p>
+                  <p><?php echo "Email: ".$rows['contactEmail'];?></p>       
+                  <p><?php echo "Location: ".$rows['location'];?></p>
+                  <p><?php //echo "User ID: ".$rows['user_ID'];?></p>
+                </div>
+                </div>
+
+            <?php
+                }
+            ?>
+        </div>
+    </div>
+    
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
+<footer class="footer">
+         <p>end of web page</p>
+         <p>Afri-E-Com 2025</p>
+</footer>
+</html>
