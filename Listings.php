@@ -36,9 +36,7 @@ if(isset($_POST["CreateListing"])){
                  "Listing contact email:". $row['contactEmail']."<br>".
                  "Listing :". $row['itemImage']."<br>".
                  "Listing : ". $row['location']."<br>".
-                 "User ID: ". $row['user_ID']."<br>"; */
-            
-                 
+                 "User ID: ". $row['user_ID']."<br>"; */                        
                  
         }
         else{

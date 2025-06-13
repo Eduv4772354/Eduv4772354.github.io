@@ -97,6 +97,7 @@ h2{
     display: flex;
   background: #fff;
   width: max-content;
+  flex-direction: column;
   padding: 1.5rem;
   margin: 50px auto;
   border-radius: 10px;

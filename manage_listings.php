@@ -1,6 +1,10 @@
 <?php
     session_start();
     include("dbconn.php");
+    //$ListingTable="tbl_listings";
+    $ListingTitle= "Hatsune miku figure";
+    $sqlGet= " SELECT * FROM tbl_listings";
+    $Result=$dbconn->query($sqlGet);
 ?>
 
 <!DOCTYPE html>
@@ -43,17 +47,58 @@
     <div class="main-div">
       <h1 id="Main-heading">Manage Listings</h1>
     </div>
-    
+     <label>Listing ID</label>
+              <input type="text" id="ViewID" name="ListingID"><br>
     <div class="main-div">
-        <div class="admincontainer">
-            <h2>View Current listings</h2>
-
+    <div class="admincontainer">  
+    <h2>View Current listings</h2>      
+       <?php
+        while($rows=$Result->fetch_assoc()){
+          $ImageData =$rows['itemImage'];
+          $ListingTitle=$rows['listingTitle'];
+          $Description=$rows['description'];
+          $ListingID=$rows['listing_ID'];       
+          $price=$rows["price"];
+          $contactno=$rows["contactNo"];
+          $Email=$rows["contactEmail"];
+          $location=$rows["location"];
+          $UserID=$rows["user_ID"];
+        ?> 
+            <div>
+              <table style="width:100%">
+                  <tr>
+                    <th>ListingID</th>
+                    <th>Listing Title</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>contact number</th>
+                    <th>Email</th></th>
+                    <th>location</th>  
+                  </tr>
+                  <tr>
+                    <td><?= $ListingID ?></th>
+                    <td><?= htmlspecialchars($ListingTitle) ?></td>
+                    <td><?= htmlspecialchars($Description) ?></td>
+                    <td><?= htmlspecialchars($price) ?></td>
+                    <td><?= htmlspecialchars($contactno) ?></td>
+                    <td><?= htmlspecialchars($Email) ?></td>
+                    <td><?= htmlspecialchars($location) ?></td>
+                  </tr>
+                </table>
+            </div>            
         </div>
+        <?php
+        }
+        ?>
+
         <div class="admincontainer">
             <h2>Edit Current listings</h2>
+            <input type="text" id="ViewID" name="ListingID"><br>
         </div>
+
         <div class="admincontainer">
             <h2>Delete Current listings</h2>
+            <input type="text" id="ViewID" name="ListingID"><br>
         </div>
     </div>
 
