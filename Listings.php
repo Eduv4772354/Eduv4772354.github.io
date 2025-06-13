@@ -1,6 +1,6 @@
 <?php
-
-include "dbconn.php";
+    session_start();
+    include "dbconn.php";
 $MemberTable="tbl_member";
 $ListingTable="tbl_listings";
 
@@ -14,32 +14,41 @@ if(isset($_POST["CreateListing"])){
     $Email=$_POST["C-LstContactEmail"];
     $itemimage=$_POST["C-LstImage"];
     $location=$_POST["C-LstLocation"];
-    $User_ID=$_SESSION["U_ID"];
+
+
+    
+
         //If the whole thing exists besides the email since im using it as the foreign
         //Logic get email and look for User_ID
-        $CheckEmailExists="SELECT * FROM $ListingTable where contactEmail='$Email'";
+        $CheckEmailExists="SELECT * FROM $ListingTable where contactEmail='$Email' and listingTitle='$ListingTitle'";
         $ShowMemberInfo="SELECT * FROM $ListingTable";
         $Result=$dbconn->query($CheckEmailExists);
         $ShowData=$dbconn->query($ShowMemberInfo);
 
         if($Result->num_rows>0){
-            echo "email exists enter a new email !<br>";
-            
+            //echo "email exists enter a new email !<br>";
+            //echo "User UID: ". $row['user_ID'];
                 //This was to test if It could get the data from the db
-           /* while($row=$Result->fetch_assoc())
-            echo "User UID: ". $row['user_ID']."<br>".
-                 "User first name:". $row['firstName']."<br>".
-                 "User last name:". $row['lastName']."<br>".
-                 "User email address:". $row['emailAddress']."<br>".
-                 "User password: ". $row['PASSWORD']."<br>".
-                 "User Admin status: ". $row['isAdmin']."<br>";
-            */
+            /*while($row=$Result->fetch_assoc())
+            echo "Listing ID: ". $row['listingTitle']."<br>".
+                 "Listing description: ". $row['description']."<br>".
+                 "Listing price: ". $row['price']."<br>".
+                 "Listing contact number:". $row['contactNo']."<br>".
+                 "Listing contact email:". $row['contactEmail']."<br>".
+                 "Listing :". $row['itemImage']."<br>".
+                 "Listing : ". $row['location']."<br>".
+                 "User ID: ". $row['user_ID']."<br>"; */
+            
                  
                  
         }
         else{
-            $row=$Result->fetch_assoc();
-            //$User_ID["ser_ID"]=$row["user_ID"];
+            while($row=$Result->fetch_assoc())
+            echo"Nothing";
+            $row['user_ID']=$_SESSION["U_ID"];
+            echo "User ID: ". $row['user_ID'];
+            
+            $User_ID=$row['user_ID'];
             $InsertQuery="INSERT INTO $ListingTable(listingTitle, description, price, contactNo, contactEmail, itemImage, location,user_ID)
                             VALUES ('$ListingTitle','$description','$price','$contactno','$Email','$itemimage','$location','$User_ID')";
                         if($dbconn->query($InsertQuery)==TRUE){
@@ -47,6 +56,7 @@ if(isset($_POST["CreateListing"])){
                         }
                         else{
                             echo "posting error<br>";
+                            
                             echo "Error:".$conn->error;
                         }
         }
