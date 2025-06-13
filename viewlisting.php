@@ -1,6 +1,11 @@
 <?php
     session_start();
     include("dbconn.php");
+    $ListingTable="tbl_listings";
+    $ListingTitle= "Hatsune miku card";
+    $sqlGet= " SELECT * FROM tbl_listings WHERE listingTitle='$ListingTitle'";
+    $GetResult=$dbconn->query($sqlGet);
+
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +35,7 @@
           <a class="nav-link" href="#">Settings</a>
         </li>
                 <li class="nav-item">
-            <form action ="home.php" method="post"> 
+            <form action ="index.php" method="post"> 
               <input type="submit" class="nav-link"  name="logout" value="logout"></a>
             </form>
         </li>
@@ -40,8 +45,24 @@
 </nav>
 
     <div class="main-div">
-      <h1 id="Main-heading">Listing</h1>
-
+      <h1 id="Main-heading">Listing: </h1>
+        <?php while($rows=$GetResult->fetch_assoc())
+                {
+        ?>
+        <p><?php Echo $rows['listingTitle'] ?></p>
+        <div >
+                <!-- referenced https://www.geeksforgeeks.org/php/how-to-fetch-data-from-localserver-database-and-display-on-html-table-using-php/-->
+                <p><?php echo $rows['description'];?></p>
+                <p><?php echo"R". $rows['price'];?></p>
+                <p><?php echo $rows['contactNo'];?></p>
+                <p><?php echo $rows['contactEmail'];?></p>
+                <p><?php echo '<img src="data:image/jpeg;base64,'. $rows['itemImage'] .'" alt="Base64 Image">'; ;?></p>
+                <p><?php echo $rows['location'];?></p>
+                <p><?php echo $rows['user_ID'];?></p>
+            <?php
+                }
+            ?>
+        </div>
     </div>
     
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>

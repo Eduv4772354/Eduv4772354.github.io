@@ -53,8 +53,21 @@
 <main>
     <div class="main-div">
       <h1 id="Main-heading">Main page</h1>
-      <p>This is the first paragraph</p>
-    
+      <p>View listings</p>
+      <ul>
+        <li class="nav-item">
+            <a class="nav-link" href="viewlisting.php">Manage Listings</a>
+        </li>
+      </ul>
+
+      <div>
+        <?php
+      //$img= file_get_contents($itemimage);
+          //  $ImageData = base64_encode($img);
+      //echo '<img src="data:image/jpeg;base64,'. $data .'" alt="Base64 Image">';   
+        ?>
+      </div>
+
   </div>
   <div class="listings-div">        
       <h2>Current Listings</h2>
@@ -65,7 +78,7 @@
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a href="viewlisting.php" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
         <div class="card" style="width: 18rem;">
@@ -73,7 +86,7 @@
           <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a href="viewlisting.php" class="btn btn-primary">Go somewhere</a>
           </div>
         </div>
       <div class="card" style="width: 18rem;">
@@ -81,7 +94,7 @@
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a href="viewlisting.php" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
       </div>

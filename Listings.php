@@ -26,7 +26,8 @@ if(isset($_POST["CreateListing"])){
         $ShowData=$dbconn->query($ShowMemberInfo);
 
         if($Result->num_rows>0){
-            //echo "email exists enter a new email !<br>";
+            echo "This listing exists !<br>";
+            //header("location: createlisting.php");
             //echo "User UID: ". $row['user_ID'];
                 //This was to test if It could get the data from the db
             /*while($row=$Result->fetch_assoc())
@@ -45,12 +46,14 @@ if(isset($_POST["CreateListing"])){
         else{
             while($row=$Result->fetch_assoc())
             echo"Nothing";
+            $img= file_get_contents($itemimage);
+            $ImageData = base64_encode($img);
             $row['user_ID']=$_SESSION["U_ID"];
             echo "User ID: ". $row['user_ID'];
             
             $User_ID=$row['user_ID'];
-            $InsertQuery="INSERT INTO $ListingTable(listingTitle, description, price, contactNo, contactEmail, itemImage, location,user_ID)
-                            VALUES ('$ListingTitle','$description','$price','$contactno','$Email','$itemimage','$location','$User_ID')";
+            $InsertQuery="INSERT INTO $ListingTable(listingTitle, description, price, contactNo, contactEmail, itemImage, location, user_ID)
+                            VALUES ('$ListingTitle','$description','$price','$contactno','$Email','$ImageData','$location','$User_ID')";
                         if($dbconn->query($InsertQuery)==TRUE){
                             header("location: Mainpage.php");
                         }

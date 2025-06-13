@@ -55,6 +55,13 @@
         <h3>Welcome to <img src=Tools/Images/icons8-south-africa-color-32.png>AfriECom</h3>
       </div>  
   </div>
+  <?php
+      $img= file_get_contents('https://media.geeksforgeeks.org/wp-content/uploads/geeksforgeeks-22.png');
+      $data = base64_encode($img); 
+      echo  $data;   
+    ?>
+    
+
        <br><br><br><br><br><br><br>
 </main>
 
