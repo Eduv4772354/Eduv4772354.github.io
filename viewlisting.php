@@ -1,9 +1,11 @@
 <?php
     session_start();
     include("dbconn.php");
-    $ListingTable="tbl_listings";
-    $ListingTitle= "Hatsune miku card";
-    $sqlGet= " SELECT * FROM tbl_listings WHERE listingTitle='$ListingTitle'";
+    if (isset($_GET['id'])) {
+    $id = $_GET['id'];}
+    //$ListingTable="tbl_listings";
+    $ListingTitle= "Hatsune miku figure";
+    $sqlGet= " SELECT * FROM tbl_listings WHERE listing_ID='$id'";
     $GetResult=$dbconn->query($sqlGet);
 
 ?>
@@ -29,12 +31,12 @@
     <div class="collapse navbar-collapse nav-icons" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="index.php">Homepage</a>
+          <a class="nav-link" href="Mainpage.php">Mainpage</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Settings</a>
         </li>
-                <li class="nav-item">
+        <li class="nav-item">
             <form action ="index.php" method="post"> 
               <input type="submit" class="nav-link"  name="logout" value="logout"></a>
             </form>
@@ -56,7 +58,7 @@
                 <p><?php echo"R". $rows['price'];?></p>
                 <p><?php echo $rows['contactNo'];?></p>
                 <p><?php echo $rows['contactEmail'];?></p>
-                <p><?php echo '<img src="data:image/jpeg;base64,'. $rows['itemImage'] .'" alt="Base64 Image">'; ;?></p>
+                <p><?php echo '<img src="data:image/jpeg;base64,'. $rows['itemImage'] .'" alt="Base64 Image" width="250px" length="250px">'; ;?></p>
                 <p><?php echo $rows['location'];?></p>
                 <p><?php echo $rows['user_ID'];?></p>
             <?php

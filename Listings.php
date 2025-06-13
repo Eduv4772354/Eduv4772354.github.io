@@ -12,10 +12,8 @@ if(isset($_POST["CreateListing"])){
     $price=$_POST["C-Lstprice"];
     $contactno=$_POST["C-LstContactNo"];
     $Email=$_POST["C-LstContactEmail"];
-    $itemimage=$_POST["C-LstImage"];
+    //$itemimage=$_POST["C-LstImage"];
     $location=$_POST["C-LstLocation"];
-
-
     
 
         //If the whole thing exists besides the email since im using it as the foreign
@@ -30,8 +28,8 @@ if(isset($_POST["CreateListing"])){
             //header("location: createlisting.php");
             //echo "User UID: ". $row['user_ID'];
                 //This was to test if It could get the data from the db
-            /*while($row=$Result->fetch_assoc())
-            echo "Listing ID: ". $row['listingTitle']."<br>".
+            //while($row=$Result->fetch_assoc())
+            /*echo "Listing ID: ". $row['listingTitle']."<br>".
                  "Listing description: ". $row['description']."<br>".
                  "Listing price: ". $row['price']."<br>".
                  "Listing contact number:". $row['contactNo']."<br>".
@@ -46,8 +44,9 @@ if(isset($_POST["CreateListing"])){
         else{
             while($row=$Result->fetch_assoc())
             echo"Nothing";
-            $img= file_get_contents($itemimage);
-            $ImageData = base64_encode($img);
+            $imgTmpPath = $_FILES['C-LstImage']['tmp_name'];
+            $imgData = file_get_contents($imgTmpPath);
+            $ImageData = base64_encode($imgData);
             $row['user_ID']=$_SESSION["U_ID"];
             echo "User ID: ". $row['user_ID'];
             

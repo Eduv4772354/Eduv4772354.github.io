@@ -1,6 +1,8 @@
 <?php
     session_start();
     include("dbconn.php");
+    $sqlGet= " SELECT * FROM tbl_listings";
+    $Result=$dbconn->query($sqlGet);
 ?>
 
 <!DOCTYPE html>
@@ -54,12 +56,6 @@
     <div class="main-div">
       <h1 id="Main-heading">Main page</h1>
       <p>View listings</p>
-      <ul>
-        <li class="nav-item">
-            <a class="nav-link" href="viewlisting.php">Manage Listings</a>
-        </li>
-      </ul>
-
       <div>
         <?php
       //$img= file_get_contents($itemimage);
@@ -69,35 +65,34 @@
       </div>
 
   </div>
+  
   <div class="listings-div">        
+
       <h2>Current Listings</h2>
+      <div class="row">
+
+        <?php
+        while($rows=$Result->fetch_assoc()){
+          $ImageData =$rows['itemImage'];
+          $ListingTitle=$rows['listingTitle'];
+          $Description=$rows['description'];
+          $ListingID=$rows['listing_ID'];
         
-        <div class="row">
-            <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-          <a href="viewlisting.php" class="btn btn-primary">Go somewhere</a>
+        ?>
+         <div class="card" style="width: 18rem;">
+            <img src="data:image/jpeg;base64,<?= $ImageData ?>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><?= htmlspecialchars($ListingTitle) ?></h5>
+              <p class="card-text"><?= htmlspecialchars($Description) ?> </p>
+              <a href="viewlisting.php?id=<?= $ListingID ?>" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div> 
+        <?php
+        }
+        ?>
         </div>
-      </div>
-        <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-            <a href="viewlisting.php" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-          <a href="viewlisting.php" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-      </div>
+    </div>
+      
 </main>
 
   

@@ -50,7 +50,7 @@
     <div class="listingcontainer">
       <div>
           <h2 id="Details">Listing details</h2><br>
-        <form class="registration-div" action="Listings.php" method="post">
+        <form class="registration-div" action="Listings.php" method="post" enctype="multipart/form-data">
           <!--
           listing_ID
           ListingTitle
