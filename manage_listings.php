@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="sitepro\CSS\styles.css">
-    <script src="Tools/JS/scripts.js"></script>
+    <script src="sitepro/JS/scripts.js"></script>
     <title>Manage Listings</title>
 </head>
 <body>
@@ -47,6 +47,7 @@
     <div class="main-div">
         <div class="admincontainer">
             <h2>View Current listings</h2>
+
         </div>
         <div class="admincontainer">
             <h2>Edit Current listings</h2>

@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="sitepro\CSS\styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <script src="Tools/JS/scripts.js"></script>
+    <script src="sitepro/JS/scripts.js"></script>
     <title>Registration</title>
 
 </head>
@@ -53,6 +53,7 @@
           <label class="lbl" for="log-password">password:</label>
           <input type="password" id="log-password" name="password" placeholder="Enter password" required>         
           </div>
+
             <input type="submit" id="loginbtn" name="Login" value="Login"><br>
             
         </form>
@@ -66,25 +67,25 @@
           
           <div class="input-group">
             <label class="lbl" for="firstname">First name:</label>
-          <input type="text" id="firstname" name="firstname" placeholder="Enter First name" required>           
+          <input type="text" id="firstname" name="firstname" placeholder="Enter First name" >           
           </div>
 
           <div class="input-group">
           <label class="lbl" for="lastname">Last name:</label>
-          <input type="text" id="lastname" name="lastname" placeholder="Enter First name" required>       
+          <input type="text" id="lastname" name="lastname" placeholder="Enter First name" >       
           </div>
 
           <div class="input-group">
           <label class="lbl" for="email">email address:</label>
-          <input type="email" id="email" name="emailaddress" placeholder="Enter email" required>
+          <input type="email" id="email" name="emailaddress" placeholder="Enter email" >
           </div>
 
           <div class="input-group">          
           <label class="lbl" for="password">password:</label>
-          <input type="password" id="password" name="password" placeholder="Enter password" required>         
+          <input type="password" id="password" name="password" placeholder="Enter password" >         
           </div>
 
-          <input type="submit" name="Register" value="register">
+          <input onclick="inputValidation()" type="submit" name="Register" value="register">
           
           </div>
         </form>

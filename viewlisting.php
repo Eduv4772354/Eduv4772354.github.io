@@ -17,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="sitepro\CSS\styles.css">
-    <script src="Tools/JS/scripts.js"></script>
+    <script src="sitepro/JS/scripts.js"></script>
     <title>Listing</title>
 </head>
 <body>
@@ -51,16 +51,21 @@
         <?php while($rows=$GetResult->fetch_assoc())
                 {
         ?>
-        <p><?php Echo $rows['listingTitle'] ?></p>
+        <h3><?php Echo $rows['listingTitle'] ?></h3>
         <div >
-                <!-- referenced https://www.geeksforgeeks.org/php/how-to-fetch-data-from-localserver-database-and-display-on-html-table-using-php/-->
-                <p><?php echo $rows['description'];?></p>
-                <p><?php echo"R". $rows['price'];?></p>
-                <p><?php echo $rows['contactNo'];?></p>
-                <p><?php echo $rows['contactEmail'];?></p>
-                <p><?php echo '<img src="data:image/jpeg;base64,'. $rows['itemImage'] .'" alt="Base64 Image" width="250px" length="250px">'; ;?></p>
-                <p><?php echo $rows['location'];?></p>
-                <p><?php echo $rows['user_ID'];?></p>
+          <div class="Viewlistingcontainer">
+                 <!-- referenced https://www.geeksforgeeks.org/php/how-to-fetch-data-from-localserver-database-and-display-on-html-table-using-php/-->
+                <p><?php echo '<img src="data:image/jpeg;base64,'. $rows['itemImage'] .'" alt="Base64 Image" width="500px" length="500px">'; ;?></p>
+                 <div class="main-div">
+                  <p><?php echo "Description: ".$rows['description'];?></p>
+                  <p><?php echo "Price: "."R". $rows['price'];?></p>
+                  <p><?php echo "Phone number: ".$rows['contactNo'];?></p>
+                  <p><?php echo "Email: ".$rows['contactEmail'];?></p>       
+                  <p><?php echo "Location: ".$rows['location'];?></p>
+                  <p><?php //echo "User ID: ".$rows['user_ID'];?></p>
+                </div>
+                </div>
+
             <?php
                 }
             ?>

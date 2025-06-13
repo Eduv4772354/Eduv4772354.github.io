@@ -81,6 +81,18 @@ h2{
   box-shadow: 0 10px 20px;
 }
 
+.Viewlistingcontainer{
+     display: flex;
+  background: #ffffff;
+  width: max-content;
+  padding: 1.5rem;
+  margin: 30px auto;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px;
+  font-size: large;
+  font-weight: 200;
+}
+
 .admincontainer{
     display: flex;
   background: #fff;

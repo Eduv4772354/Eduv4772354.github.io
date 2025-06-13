@@ -3,7 +3,7 @@
 include "dbconn.php";
 $MemberTable="tbl_member";
 $ListingTable="tbl_listings";
-$_SESSION["EmailAddress"];
+//$_SESSION["EmailAddress"];
 
 //Remeber to update emails as unique keys and to run that SQL script for the incrementation
 //for both primary keys
@@ -23,8 +23,8 @@ if(isset($_POST["Register"])){
         $ShowData=$dbconn->query($ShowMemberInfo);
 
         if($Result->num_rows>0){
-            echo "email exists enter a new email !<br>";
-            
+            //echo "email exists enter a new email !<br>";
+            header("location: login.php");
                         //This was to test if It could get the data from the db
            /* while($row=$Result->fetch_assoc())
             echo "User UID: ". $row['user_ID']."<br>".
