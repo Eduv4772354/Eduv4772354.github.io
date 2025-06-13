@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include("dbconn.php");
 ?>
 
 <!DOCTYPE html>
@@ -34,6 +35,9 @@
           <a class="nav-link" href="login.php">Login</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="createlisting.php">Create Listing</a>
+        </li>
+        <li class="nav-item">
             <form action ="index.php" method="post"> 
               <input type="submit" class="nav-link"  name="logout" value="logout"></a>
             </form>
@@ -56,9 +60,10 @@
 
       <input type="text" id="inputText" placeholder="Enter text"><br>
       <button onclick="changeTitle()"> Change heading</button>
+
+      
   </div>
-        <div class="listings-div">
-          
+        <div class="listings-div">        
       <h2>Current Listings</h2>
         
         <div class="row">

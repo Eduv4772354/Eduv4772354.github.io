@@ -3,6 +3,12 @@
 include "dbconn.php";
 $MemberTable="tbl_member";
 $ListingTable="tbl_listings";
+$_SESSION["EmailAddress"];
+
+//Remeber to update emails as unique keys and to run that SQL script for the incrementation
+//for both primary keys
+
+
 
 
 if(isset($_POST["Register"])){
@@ -51,20 +57,20 @@ if(isset($_POST["Login"])){
         $CheckEmailExists1="SELECT * FROM $MemberTable where emailAddress='$Email' and PASSWORD='$Password'";
         $Result=$dbconn->query($CheckEmailExists1);
         if($Result->num_rows>0){
-            echo "email exists enter a new email !<br>";
-            while($row=$Result->fetch_assoc())
-            
-            //header("location: index.php");
-                        //This was to test if It could get the data from the db
-            
+            $row=$Result->fetch_assoc();
+            session_start();
+            $_SESSION["EmailAddress"]=$row["emailAddress"];
+            header("location: index.php");
+            //This was to test if It could get the data from the db
+            /*
             echo "User UID: ". $row['user_ID']."<br>".
                  "User first name:". $row['firstName']."<br>".
                  "User last name:". $row['lastName']."<br>".
                  "User email address:". $row['emailAddress']."<br>".
                  "User password: ". $row['PASSWORD']."<br>".
-                 "User Admin status: ". $row['isAdmin']."<br>";
-            $_SESSION["EmailAddress"]=$row["emailAddress"];
-                 
+                 "User Admin status: ". $row['isAdmin']."<br>";*/
+            
+            exit();
                  
         }
         else{

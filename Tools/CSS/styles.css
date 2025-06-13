@@ -53,17 +53,33 @@ h2{
     justify-content: space-between;
 }
 
+.listing-input-group{
+    margin:5px;
+    padding-left: 5px;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+}
 
 .container{
+  display: flex;
   background: #fff;
   width: 450px;
   padding: 1.5rem;
   margin: 50px auto;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0 10px 20px;
-  
 }
 
+.listingContainer{
+  display: flex;
+  background: #fff;
+  width: 700px;
+  padding: 1.5rem;
+  margin: 50px auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px;
+}
 
 main{
   margin: 15px;
