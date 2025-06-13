@@ -1,5 +1,5 @@
 <?php
-    session_start();
+   session_start();
 ?>
 
 <!DOCTYPE html>
@@ -17,17 +17,20 @@
 <body>
       <nav class="navbar navbar-expand-lg bg-body-tertiary py-3">
   <div class="container-fluid">
-    <a class="navbar-brand" href="Home.php"><img src=Tools/Images/icons8-south-africa-color-70.png>Afri-E-Com</a>
+    <a class="navbar-brand" href="index.php"><img src=Tools/Images/icons8-south-africa-color-70.png>Afri-E-Com</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse nav-icons" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="Home.php">Homepage</a>
+          <a class="nav-link" href="index.php">Homepage</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#"> </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" ><?php if(isset($_SESSION["EmailAddress"])){ echo "Greetings ". $_SESSION["EmailAddress"];}else{echo "No user signed in";}; ?> </a>
         </li>
       </ul>
     </div>
@@ -35,6 +38,26 @@
 </nav>
 
 <!--Body-->
+   <div class="container" id="login">
+    <div class="login-div">
+      <h2 class="form-title">Sign In</h2>
+        <form class="registration-div" action="Registration.php" method="post">
+
+          <div class="input-group">
+          <label class="lbl" for="log-email">email address:</label>
+          <input type="email" id="log-email" name="emailaddress" placeholder="Enter email" required>
+          </div>
+
+          <div class="input-group">          
+          <label class="lbl" for="log-password">password:</label>
+          <input type="password" id="log-password" name="password" placeholder="Enter password" required>         
+          </div>
+            <input type="submit" id="loginbtn" name="Login" value="Login"><br>
+            
+        </form>
+  </div>
+</div>
+
   <div class="container" id="registration">
     <div class="login-div">
       <h2 id="form-title">Registation page</h2>
@@ -60,29 +83,12 @@
           <input type="password" id="password" name="password" placeholder="Enter password" required>         
           </div>
 
-          <input type="submit"  name="Register" value="Register">
+          <input type="submit" name="Register" value="register">
+          
           </div>
         </form>
   </div>
 
-</div>
-   <div class="container" id="login">
-    <div class="login-div">
-      <h2 class="form-title">Sign In</h2>
-        <form class="registration-div" action="login.php" method="post">
-
-          <div class="input-group">
-          <label class="lbl" for="log-email">email address:</label>
-          <input type="email" id="log-email" name="emailaddress" placeholder="Enter email" required>
-          </div>
-
-          <div class="input-group">          
-          <label class="lbl" for="log-password">password:</label>
-          <input type="password" id="log-password" name="password" placeholder="Enter password" required>         
-          </div>
-            <input type="submit" id="loginbtn" name="login" value="Login"><br>
-        </form>
-  </div>
 </div>
 
 <!--JS-->
@@ -100,7 +106,7 @@
     //There needs to be a connection between the DB and this session where we first verify if text is not empty and then if that data exists in the DB then it logs in
 
     //user must not be able to go back to login from home.php
-        if(isset($_POST["login"])){
+       /*    if(isset($_POST["login"])){
         if(!empty($_POST["emailaddress"]) && !empty($_POST["password"])){
                 //Saving session credentials
                 $_SESSION["EmailAddress"] = $_POST["emailaddress"];
@@ -108,11 +114,26 @@
                
                 //Just to show if it works   
                 //no echo before header
-                header("location: Home.php");  
+                header("location: home.php");  
         }
         else{
           echo"missing username/password <br>";
         }
     }
+                if($Result->num_rows>0){
+            echo "email exists enter a new email !<br>";
+            session_start();
+            $row = $Result->fetch_assoc();
+            $_SESSION["emailAddress"]=$row["emailAddress"];
+            header("location: login.php");
+            exit();
+            
+             and PASSWORD='$Password'
+            
+            
+        }
+    
+    
+    */
 
 ?>
