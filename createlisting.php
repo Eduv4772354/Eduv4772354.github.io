@@ -34,6 +34,9 @@
               <input type="submit" class="nav-link"  name="logout" value="logout"></a>
             </form>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" ><?php if(isset($_SESSION["EmailAddress"])){ echo "Greetings ". $_SESSION["EmailAddress"];}else{echo "No user signed in";}; ?> </a>
+        </li>
       </ul>
     </div>
   </div>
@@ -44,7 +47,7 @@
 
     </div>
         
-    <div class="listingContainer">
+    <div class="listingcontainer">
       <div>
           <h2 id="Details">Listing details</h2><br>
         <form class="registration-div" action="Listings.php" method="post">
@@ -91,7 +94,7 @@
 
           <div class="listing-input-group">
             <label class="lbl" for="C-LstLocation">Location:</label>
-            <input type="text" id="C-LstLocation" name="C-LstLocation" placeholder="Enter Location (preferably Provice-City/Town" required>
+            <input type="text" id="C-LstLocation" name="C-LstLocation" placeholder="Enter Location (preferably Provice-City/Town)" required>
           </div>
           <!---user_ID is taken from $_SESSION['user_ID']-->
           <input type="submit" name="CreateListing" value="Create Listing">

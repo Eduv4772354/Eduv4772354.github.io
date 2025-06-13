@@ -42,7 +42,7 @@ if(isset($_POST["Register"])){
             $InsertQuery="INSERT INTO $MemberTable(lastname,firstName,emailAddress,PASSWORD,isAdmin)
                             VALUES ('$LastName','$FirstName','$Email','$Password',0)";
                         if($dbconn->query($InsertQuery)==TRUE){
-                            header("location: index.php");
+                            header("location: Mainpage.php");
                         }
                         else{
                             echo "Error:".$conn->error;
@@ -60,7 +60,13 @@ if(isset($_POST["Login"])){
             $row=$Result->fetch_assoc();
             session_start();
             $_SESSION["EmailAddress"]=$row["emailAddress"];
-            header("location: index.php");
+            $_SESSION["U_ID"]=$row["user_ID"];
+            if($row['isAdmin']==0){
+                header("location: Mainpage.php");
+            }
+            else{
+                header("location: adminpage.php");
+            }
             //This was to test if It could get the data from the db
             /*
             echo "User UID: ". $row['user_ID']."<br>".
@@ -68,8 +74,7 @@ if(isset($_POST["Login"])){
                  "User last name:". $row['lastName']."<br>".
                  "User email address:". $row['emailAddress']."<br>".
                  "User password: ". $row['PASSWORD']."<br>".
-                 "User Admin status: ". $row['isAdmin']."<br>";*/
-            
+                 "User Admin status: ". $row['isAdmin']."<br>";*/            
             exit();
                  
         }

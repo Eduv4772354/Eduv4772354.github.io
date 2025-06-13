@@ -26,10 +26,13 @@
     <div class="collapse navbar-collapse nav-icons" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="index.php">Landing Page</a>
+          <a class="nav-link" href="index.php">Homepage</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="login.php">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="createlisting.php">Create Listing</a>
         </li>
         <li class="nav-item">
             <form action ="index.php" method="post"> 
@@ -48,14 +51,40 @@
 <!--Body-->
 <!--Add main tag-->
 <main>
-  
     <div class="main-div">
-      <h1 id="Main-heading">Landing page</h1> 
-      <div>
-        <h3>Welcome to <img src=Tools/Images/icons8-south-africa-color-32.png>AfriECom</h3>
-      </div>  
+      <h1 id="Main-heading">Main page</h1>
+      <p>This is the first paragraph</p>
+    
   </div>
-       <br><br><br><br><br><br><br>
+  <div class="listings-div">        
+      <h2>Current Listings</h2>
+        
+        <div class="row">
+            <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+        <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      </div>
 </main>
 
   

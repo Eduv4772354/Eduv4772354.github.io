@@ -4,7 +4,9 @@ include "dbconn.php";
 $MemberTable="tbl_member";
 $ListingTable="tbl_listings";
 
+
 if(isset($_POST["CreateListing"])){
+
     $ListingTitle=$_POST["C-LstTitle"];
     $description=$_POST["C-LstDescription"];
     $price=$_POST["C-Lstprice"];
@@ -12,8 +14,7 @@ if(isset($_POST["CreateListing"])){
     $Email=$_POST["C-LstContactEmail"];
     $itemimage=$_POST["C-LstImage"];
     $location=$_POST["C-LstLocation"];
-    $User_ID=2;
-    
+    $User_ID=$_SESSION["U_ID"];
         //If the whole thing exists besides the email since im using it as the foreign
         //Logic get email and look for User_ID
         $CheckEmailExists="SELECT * FROM $ListingTable where contactEmail='$Email'";
@@ -37,10 +38,12 @@ if(isset($_POST["CreateListing"])){
                  
         }
         else{
+            $row=$Result->fetch_assoc();
+            //$User_ID["ser_ID"]=$row["user_ID"];
             $InsertQuery="INSERT INTO $ListingTable(listingTitle, description, price, contactNo, contactEmail, itemImage, location,user_ID)
                             VALUES ('$ListingTitle','$description','$price','$contactno','$Email','$itemimage','$location','$User_ID')";
                         if($dbconn->query($InsertQuery)==TRUE){
-                            header("location: index.php");
+                            header("location: Mainpage.php");
                         }
                         else{
                             echo "posting error<br>";
