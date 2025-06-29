@@ -31,11 +31,12 @@
         <li class="nav-item">
           <a class="nav-link" href="login.php">Login</a>
         </li>
+        <!--
         <li class="nav-item">
             <form action ="index.php" method="post"> 
               <input type="submit" class="nav-link"  name="logout" value="logout"></a>
             </form>
-        </li>
+        </li>-->
         <li class="nav-item">
           <a class="nav-link" ><?php if(isset($_SESSION["EmailAddress"])){ echo "Greetings ". $_SESSION["EmailAddress"];}else{echo "No user signed in";}; ?> </a>
         </li>

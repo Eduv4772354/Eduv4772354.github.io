@@ -26,9 +26,6 @@
         <li class="nav-item">
           <a class="nav-link" href="Mainpage.php">Homepage</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Settings</a>
-        </li>
                 <li class="nav-item">
             <form action ="index.php" method="post"> 
               <input type="submit" class="nav-link"  name="logout" value="logout"></a>
