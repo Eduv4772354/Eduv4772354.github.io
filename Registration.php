@@ -42,7 +42,7 @@ if(isset($_POST["Register"])){
             $InsertQuery="INSERT INTO $MemberTable(lastname,firstName,emailAddress,PASSWORD,isAdmin)
                             VALUES ('$LastName','$FirstName','$Email','$Password',0)";
                         if($dbconn->query($InsertQuery)==TRUE){
-                            header("location: Mainpage.php");
+                            header("location: login.php");
                         }
                         else{
                             echo "Error:".$conn->error;
