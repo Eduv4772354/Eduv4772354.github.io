@@ -1,6 +1,8 @@
 <?php
     session_start();
     include("dbconn.php");
+    $sqlGet= " SELECT * FROM tbl_member";
+    $Result=$dbconn->query($sqlGet);
 ?>
 
 <!DOCTYPE html>
@@ -24,9 +26,11 @@
     <div class="collapse navbar-collapse nav-icons" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="index.php">Homepage</a>
+          <a class="nav-link" href="Homepage.php">Homepage</a>
         </li>
-
+                 <li class="nav-item">
+          <a class="nav-link" href="Adminpage.php">Admin Homepage</a>
+        </li>
           <li class="nav-item">
             <form action ="index.php" method="post"> 
               <input type="submit" class="nav-link"  name="logout" value="logout"></a>
@@ -47,9 +51,35 @@
         <div class="main-div">
         <div class="admincontainer">
             <h2>View Current Members</h2>
+                        <div>
+              <table style="width:100%">
+                  <tr>
+                    <th>MemberID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>emailaddress</th>
+                    <th>Password</th>
+                    <th>Adminprivileges</th></th> 
+                  </tr>  
+                  <?php  while($MembersCont=$Result->fetch_assoc()){?>           
+                  <tr data-id="<?=$MembersCont['user_ID']?>">
+                    <td><?= $MembersCont['user_ID'] ?></th>
+                    <td contenteditable="true"><?= htmlspecialchars($MembersCont['firstName']) ?></td>
+                    <td><?= htmlspecialchars($MembersCont['lastName']) ?></td>
+                    <td><?= htmlspecialchars($MembersCont['emailAddress']) ?></td>
+                    <td><?= htmlspecialchars($MembersCont['PASSWORD']) ?></td>
+                    <td><?= htmlspecialchars($MembersCont['isAdmin']) ?></td>
+                  </tr>
+                  <?php 
+                } ?>
+                </table>
+            </div>            
         </div>
+        </div>
+
         <div class="admincontainer">
             <h2>Edit Current Members</h2>
+
         </div>
         <div class="admincontainer">
             <h2>Delete Current Members</h2>

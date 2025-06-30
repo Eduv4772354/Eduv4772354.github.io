@@ -1,8 +1,6 @@
 <?php
     session_start();
     include("dbconn.php");
-    //$ListingTable="tbl_listings";
-    $ListingTitle= "Hatsune miku figure";
     $sqlGet= " SELECT * FROM tbl_listings";
     $Result=$dbconn->query($sqlGet);
 ?>
@@ -28,9 +26,11 @@
     <div class="collapse navbar-collapse nav-icons" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="index.php">Homepage</a>
+          <a class="nav-link" href="Homepage.php">Homepage</a>
         </li>
-
+         <li class="nav-item">
+          <a class="nav-link" href="Adminpage.php">Admin Homepage</a>
+        </li>
           <li class="nav-item">
             <form action ="index.php" method="post"> 
               <input type="submit" class="nav-link"  name="logout" value="logout"></a>
@@ -52,8 +52,8 @@
     <div class="main-div">
     <div class="admincontainer">  
     <h2>View Current listings</h2>      
-       <?php
-        while($rows=$Result->fetch_assoc()){
+       <!---
+        while($rows=$Result->fetch_assoc())
           $ImageData =$rows['itemImage'];
           $ListingTitle=$rows['listingTitle'];
           $Description=$rows['description'];
@@ -62,8 +62,8 @@
           $contactno=$rows["contactNo"];
           $Email=$rows["contactEmail"];
           $location=$rows["location"];
-          $UserID=$rows["user_ID"];
-        ?> 
+          $UserID=$rows["user_ID"];-->
+        
             <div>
               <table style="width:100%">
                   <tr>
@@ -74,31 +74,32 @@
                     <th>contact number</th>
                     <th>Email</th></th>
                     <th>location</th>  
+                  </tr>  
+                  <?php  while($ListingsCont=$Result->fetch_assoc()){?>           
+                  <tr data-id="<?=$ListingsCont['listing_ID']?>">
+                    <td><?= $ListingsCont['listing_ID'] ?></th>
+                    <td contenteditable="true"><?= htmlspecialchars($ListingsCont['listingTitle']) ?></td>
+                    <td><?= htmlspecialchars($ListingsCont['description']) ?></td>
+                    <td><?= htmlspecialchars($ListingsCont['price']) ?></td>
+                    <td><?= htmlspecialchars($ListingsCont['contactNo']) ?></td>
+                    <td><?= htmlspecialchars($ListingsCont['contactEmail']) ?></td>
+                    <td><?= htmlspecialchars($ListingsCont['location']) ?></td>
                   </tr>
-                  <tr>
-                    <td><?= $ListingID ?></th>
-                    <td><?= htmlspecialchars($ListingTitle) ?></td>
-                    <td><?= htmlspecialchars($Description) ?></td>
-                    <td><?= htmlspecialchars($price) ?></td>
-                    <td><?= htmlspecialchars($contactno) ?></td>
-                    <td><?= htmlspecialchars($Email) ?></td>
-                    <td><?= htmlspecialchars($location) ?></td>
-                  </tr>
+                  <?php 
+                } ?>
                 </table>
             </div>            
         </div>
-        <?php
-        }
-        ?>
 
         <div class="admincontainer">
             <h2>Edit Current listings</h2>
-            <input type="text" id="ViewID" name="ListingID"><br>
+            <input type="text" id="SelectID" name="SelectListingID"><br>
+            <input type="button" id="ProcessChange" name="ProcessChangeN" placeholder="Make change"><br>
         </div>
 
         <div class="admincontainer">
             <h2>Delete Current listings</h2>
-            <input type="text" id="ViewID" name="ListingID"><br>
+            <input type="text" id="ViewID" name="ListingID" ><br>
         </div>
     </div>
 
