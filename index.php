@@ -57,7 +57,11 @@
       </div>  
   </div>
 
-       <br><br><br><br><br><br><br>
+  <div class="main-div">
+    <h2>Please Login to view Listings</h2>
+  </div>
+
+       <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </main>
 
   
