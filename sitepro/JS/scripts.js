@@ -25,4 +25,7 @@ function inputValidation(){
             window.history.forward();
         }
 
+function Interested(){
+    alert("Please contact email or phone for further contact");
+}      
 ;

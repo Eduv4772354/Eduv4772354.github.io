@@ -40,6 +40,9 @@
             <form action ="index.php" method="post"> 
               <input type="submit" class="nav-link"  name="logout" value="logout"></a>
             </form>
+                    <li class="nav-item">
+          <a class="nav-link" ><?php if(isset($_SESSION["EmailAddress"])){ echo "Greetings ". $_SESSION["EmailAddress"];}else{echo "No user signed in";}; ?> </a>
+        </li>
         </li>
       </ul>
     </div>
@@ -51,18 +54,19 @@
         <?php while($rows=$GetResult->fetch_assoc())
                 {
         ?>
-        <h3><?php Echo $rows['listingTitle'] ?></h3>
         <div >
           <div class="Viewlistingcontainer">
                  <!-- referenced https://www.geeksforgeeks.org/php/how-to-fetch-data-from-localserver-database-and-display-on-html-table-using-php/-->
                 <p><?php echo '<img src="data:image/jpeg;base64,'. $rows['itemImage'] .'" alt="Base64 Image" width="500px" length="500px">'; ;?></p>
                  <div class="main-div">
+                  <h3><?php Echo $rows['listingTitle'] ?></h3>
                   <p><?php echo "Description: ".$rows['description'];?></p>
                   <p><?php echo "Price: "."R". $rows['price'];?></p>
                   <p><?php echo "Phone number: ".$rows['contactNo'];?></p>
                   <p><?php echo "Email: ".$rows['contactEmail'];?></p>       
                   <p><?php echo "Location: ".$rows['location'];?></p>
                   <p><?php //echo "User ID: ".$rows['user_ID'];?></p>
+                  <input onclick="Interested()" type="submit" name="InterestInListing" value="Intrested">
                 </div>
                 </div>
 

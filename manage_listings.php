@@ -26,10 +26,10 @@
     <div class="collapse navbar-collapse nav-icons" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="Homepage.php">Homepage</a>
+          <a class="nav-link" href="Mainpage.php">Homepage</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="Adminpage.php">Admin Homepage</a>
+          <a class="nav-link" href="adminpage.php">Admin Homepage</a>
         </li>
           <li class="nav-item">
             <form action ="index.php" method="post"> 
